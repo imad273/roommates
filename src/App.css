@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+   font-family: 'DM Sans', sans-serif;
+}
+
+/* Map Styling */
+.map-container {
+   height: 400px;
+   border-radius: 10px;
+}
+
+#root > div > div > .container.flex.flex-wrap.py-4 > 
+.md\:flex-1.md\:block.md\:static.md\:m-1.block.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-top-right > 
+div > .mapboxgl-ctrl-compass ,
+
+#root > div > div > .container.flex.flex-wrap.py-4 > 
+.md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-top-right > div > .mapboxgl-ctrl-compass, 
+
+#root > div > div > .container.flex.flex-wrap.py-4 > 
+.md\:flex-1.md\:block.md\:static.md\:m-1.block.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-bottom-right > div ,
+
+#root > div > div > .container.flex.flex-wrap.py-4 > 
+.md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-bottom-right > div,
+
+#root > div > div > 
+.container.flex.flex-wrap.py-4 > .md\:flex-1.md\:block.md\:static.md\:m-1.block.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-bottom-left > div > a,
+
+#root > div > div > 
+.container.flex.flex-wrap.py-4 > .md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-bottom-left > div > a{
+
+   display: none;
+}
+
+#root > div > div > div > .md\:flex-1.md\:block.md\:static.md\:m-1.block.absolute.left-0.z-30.bg-white.w-full > div > div > 
+.mapboxgl-control-container > .mapboxgl-ctrl-top-right,
+
+#root > div > div > div > .md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > div > div > 
+.mapboxgl-control-container > .mapboxgl-ctrl-top-right {
+   bottom: 0;
+   top: auto;
+}
+
+#root > div > div > .container.flex.flex-wrap.py-4 > 
+div.md\:flex-1.md\:block.md\:static.md\:m-1.block.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-top-right > div , 
+
+#root > div > div > .container.flex.flex-wrap.py-4 > 
+div.md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-control-container > .mapboxgl-ctrl-top-right > div {
+   border-radius: 12px;
+   margin: 0px 10px 10px 0;
+}
+
+.marker {
+   background-color: #2B67F6;
+   color: #fff;
+   padding: 2px 10px;
+   border-radius: 5px;
+}
+
+#root > div > div > .container.flex.flex-wrap.py-4 > 
+.md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > 
+div > div > .mapboxgl-popup.mapboxgl-popup-anchor-bottom > .mapboxgl-popup-content > button {
+   padding: 0px 5px;
+}
+
+#root > div > div > .container.flex.flex-wrap.py-4 > .md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > div > div > .mapboxgl-popup.mapboxgl-popup-anchor-bottom > .mapboxgl-popup-content > h3 {
+   font-weight: 500;
+}
+
+#root > div > div > div.container.flex.flex-wrap.py-4 > div.md\:flex-1.md\:block.md\:static.md\:m-1.hidden.absolute.left-0.z-30.bg-white.w-full > div > div > div.mapboxgl-popup.mapboxgl-popup-anchor-bottom > div.mapboxgl-popup-content > a {
+   color: #A5A7A7;
+   outline: none;
+}
+
+@media screen and (max-width: 768px) {
+   #root > div > div > .container.flex.flex-wrap.py-4 > .md\:flex-1.md\:block.md\:static.md\:m-1.block.absolute.left-0.z-30.bg-white.w-full 
+   > div > div > .mapboxgl-canvas-container.mapboxgl-interactive.mapboxgl-touch-drag-pan.mapboxgl-touch-zoom-rotate 
+   > canvas {
+      width: 100% !important;
+      height: 100% !important;
+   }
+
+   #root > div > div > .container.flex.flex-wrap.py-4 > .md\:flex-1.md\:block.md\:static.md\:m-1.block.absolute.left-0.z-30.bg-white.w-full > div > div {
+      margin: 15px;
+   }
+}
