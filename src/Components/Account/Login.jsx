@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 function Login() {
    const [elm, setElm] = useState(false)
-
    const [Email, setEmail] = useState("")
    const [Password, setPassword] = useState("")
 
@@ -95,7 +94,6 @@ function Login() {
             </div>
          </div>
       </div>
-
    )
 }
 

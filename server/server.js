@@ -62,10 +62,10 @@ app.post('/login', (request, response) => {
 
 app.get('/search', (request, response) => {
    var keyword = request.query.keyword;
-   
 
-   let stmt2 = `SELECT * FROM places WHERE Address LIKE '%${keyword}%'`;
-   con.query(stmt2, (err, result) => {
+
+   let stmt = `SELECT * FROM places WHERE Address LIKE '%${keyword}%'`;
+   con.query(stmt, (err, result) => {
       if (err) {
          throw err
       } else {
@@ -75,8 +75,19 @@ app.get('/search', (request, response) => {
 })
 
 app.get('/places', (request, response) => {
-   let stmt2 = `SELECT * FROM places`;
-   con.query(stmt2, (err, result) => {
+   let stmt = `SELECT * FROM places`;
+   con.query(stmt, (err, result) => {
+      if (err) {
+         throw err
+      } else {
+         response.send(result)
+      }
+   })
+})
+
+app.get('/profile?:id', (request, response) => {
+   let stmt = `SELECT FullName FROM users WHERE UserID = '${request.query.id}'`;
+   con.query(stmt, (err, result) => {
       if (err) {
          throw err
       } else {

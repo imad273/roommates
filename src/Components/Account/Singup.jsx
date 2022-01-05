@@ -47,8 +47,6 @@ function Singup() {
       }
    }
 
-
-
    useEffect(() => {
       setElm(true);
    })

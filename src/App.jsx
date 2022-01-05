@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Navbar session={userSession} />
       <Routes>
-        <Route path='/' element={<Home />}>
+        <Route path='/' element={<Home session={userSession} />}>
           <Route path='/signup' element={<Signup />} />
           <Route path='/login' element={<Login />} />
         </Route>

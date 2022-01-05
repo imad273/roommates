@@ -1,18 +1,35 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import logo from '../images/logo.svg'
 import avatar from '../images/avatar-4.png'
 
 function Navbar({ session }) {
    const [LanguageWin, setLanguageWin] = useState(false);
-   const [Keyword, setKeyword] = useState("");
+   const [NameAcc, setNameAcc] = useState("")
+
+   async function getUserInfo() {
+      const request = await fetch(`http://localhost:3001/profile?id=${session}`, {
+         method: 'GET',
+         headers: {
+            'Content-Type': 'application/json'
+         }
+      })
+
+      var response = await request.json();
+      setNameAcc(response[0].FullName);
+   }
+
+   useEffect(() => {
+      if (session !== null) {
+         getUserInfo();
+      }
+   }, [])
 
    window.addEventListener('click', (e) => {
       if (e.target.id !== 'open-list') {
          setLanguageWin(false);
       }
    })
-
 
    return (
       <nav className='shadow-mine'>
@@ -68,7 +85,7 @@ function Navbar({ session }) {
                   {session !== null &&
                      <div className='flex items-center mx-3'>
                         <img src={avatar} alt="pic" className='rounded-full' />
-                        <span className='text-sm font-bold px-1.5'>Richard Lucas</span>
+                        <span className='text-sm font-bold px-1.5'>{NameAcc}</span>
                      </div>
                   }
                   <div className='flex items-center ml-3.5 relative'>

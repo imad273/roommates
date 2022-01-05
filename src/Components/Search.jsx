@@ -1,13 +1,5 @@
 import { useEffect, useState } from 'react'
-
-import img2 from '../images/pic-2.jpeg'
-import img1 from '../images/pic-1.jpeg'
-import img3 from '../images/pic-3.jpeg'
 import Map from './Map'
-import { Marker } from 'mapbox-gl'
-
-
-
 
 function Search() {
    const params = new URLSearchParams(window.location.search);

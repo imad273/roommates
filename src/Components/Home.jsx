@@ -2,13 +2,13 @@ import { useEffect, useState } from "react"
 import { Outlet, Link } from "react-router-dom"
 import MainPic from "../images/main-pic-1.jpg"
 
-function Home() {
-
+function Home({ session }) {
    const [Last3Elm, setLast3Elm] = useState([])
-
+   
+   
    async function getPlaces() {
       const request = await fetch('http://localhost:3001/places', {
-         method: 'Get',
+         method: 'GET',
          headers: {
             'Content-Type': 'application/json'
          }
@@ -17,6 +17,8 @@ function Home() {
 
       return response;
    }
+
+   
 
    useEffect(() => {
       getPlaces().then(res => {

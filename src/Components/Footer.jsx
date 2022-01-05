@@ -1,4 +1,5 @@
 import logo from '../images/logo.svg'
+
 function Footer() {
    return (
       <footer className='mb-12 md:mb-0 mt-2.5'>
