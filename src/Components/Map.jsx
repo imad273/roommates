@@ -17,7 +17,6 @@ function Map({ keyword }) {
    async function findCoordinates() {
       const request = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${keyword}.json?access_token=pk.eyJ1IjoiZW1hZDI3MyIsImEiOiJja3hmdzVqaXYzamJ3MnJvNW53MWc3a3IwIn0.hxBxt4FUMsFkD8mmeFYhbA`)
       var response = await request.json();
-
       if (map.current) return; // initialize map only once
       map.current = new mapboxgl.Map({
          container: mapContainer.current,
