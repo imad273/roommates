@@ -35,11 +35,10 @@ function Search() {
                   <p className="text-txt-gray text-sm"><span>{Data.length}</span> result</p>
                </div>
                {Data.map((result, index) => {
-                  let images = JSON.parse(result.Images);
                   return <div key={index} className="shadow-mine rounded-xl">
                      <div className="flex w-full my-2 relative">
                         <div className='m-4'>
-                           <img className='w-48 h-32 object-cover rounded-xl' src={require(`../Upload_images/${images[0]}`)} />
+                           <img className='w-48 h-32 object-cover rounded-xl' src={require(`../Upload_images/${result.image1}`)} />
                         </div>
                         <div className="w-full my-4 mr-2">
                            <h3 className='font-header font-medium'>{result.Title}</h3>
