@@ -5,7 +5,6 @@ import MainPic from "../images/main-pic-1.jpg"
 function Home({ session }) {
    const [Last3Elm, setLast3Elm] = useState([])
    
-   
    async function getPlaces() {
       const request = await fetch('http://localhost:3001/places', {
          method: 'GET',
@@ -17,9 +16,7 @@ function Home({ session }) {
 
       return response;
    }
-
    
-
    useEffect(() => {
       getPlaces().then(res => {
          var last3 = [];

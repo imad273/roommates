@@ -5,7 +5,7 @@ const cors = require('cors');
 const bcrypt = require('bcrypt')
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 app.post('/regester', async (request, response) => {
    async function cryptPass(value) {

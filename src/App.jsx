@@ -3,8 +3,6 @@ import './App.css'
 import Home from "./Components/Home"
 import Navbar from './Components/Navbar'
 import Footer from './Components/Footer'
-import Signup from './Components/Account/Singup'
-import Login from './Components/Account/Login'
 import Search from './Components/Search'
 
 function App() {
@@ -14,10 +12,7 @@ function App() {
     <div className="App">
       <Navbar session={userSession} />
       <Routes>
-        <Route path='/' element={<Home session={userSession} />}>
-          <Route path='/signup' element={<Signup />} />
-          <Route path='/login' element={<Login />} />
-        </Route>
+        <Route path='/' element={<Home session={userSession} />}></Route>
         <Route path='/search' element={<Search />} />
       </Routes>
       <Footer />
