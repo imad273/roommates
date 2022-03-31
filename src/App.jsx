@@ -6,13 +6,11 @@ import Footer from './Components/Footer'
 import Search from './Components/Search'
 
 function App() {
-  let userSession = sessionStorage.getItem('user');
-
   return (
     <div className="App">
-      <Navbar session={userSession} />
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Home session={userSession} />}></Route>
+        <Route path='/' element={<Home />}></Route>
         <Route path='/search' element={<Search />} />
       </Routes>
       <Footer />

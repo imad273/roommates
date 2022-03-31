@@ -4,8 +4,9 @@ import Account from './Account';
 import logo from '../images/logo.svg';
 import avatar from '../images/avatar-4.png';
 
-function Navbar({ session }) {
-  const [LanguageWin, setLanguageWin] = useState(false);
+function Navbar() {
+  const session = sessionStorage.getItem('user');
+
   const [NameAcc, setNameAcc] = useState("");
   const [IsAccountPage, setIsAccountPage] = useState(false);
 
@@ -27,11 +28,10 @@ function Navbar({ session }) {
     }
   }, [])
 
-  window.addEventListener('click', (e) => {
-    if (e.target.id !== 'open-list') {
-      setLanguageWin(false);
-    }
-  })
+  const logout = () => {
+    sessionStorage.removeItem('user');
+    window.location = "/";
+  }
 
   return (
     <div>
@@ -59,21 +59,25 @@ function Navbar({ session }) {
               {session !== null ?
                 <div>
                   <div className='flex items-center h-full'>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-txt-gray mx-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                    <svg className="h-5 w-5 text-txt-gray mx-3 cursor-pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                      onClick={() => logout()} >
+                      <path d="M8.51428 20H4.51428C3.40971 20 2.51428 19.1046 2.51428 18V6C2.51428 4.89543 3.40971 4 4.51428 4H8.51428V6H4.51428V18H8.51428V20Z" fill="currentColor" />
+                      <path d="M13.8418 17.385L15.262 15.9768L11.3428 12.0242L20.4857 12.0242C21.038 12.0242 21.4857 11.5765 21.4857 11.0242C21.4857 10.4719 21.038 10.0242 20.4857 10.0242L11.3236 10.0242L15.304 6.0774L13.8958 4.6572L7.5049 10.9941L13.8418 17.385Z" fill="currentColor" />
                     </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-txt-gray mx-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-txt-gray mx-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
+                    <div className="w-[1px] h-full bg-txt-gray"></div>
+                    <div>
+                      <div className='flex items-center mx-3'>
+                        <div className="w-[1px] bg-txt-gray"></div>
+                        <img src={avatar} alt="pic" className='rounded-full' />
+                        <span className='text-sm font-bold px-1.5'>{NameAcc}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 :
                 <div>
                   <div className="links flex mx-2">
-                    <div className='flex m-1.5 cursor-pointer' onClick={() => {setIsAccountPage(true)}}>
+                    <div className='flex m-1.5 cursor-pointer' onClick={() => { setIsAccountPage(true) }}>
                       <span className='mx-2 hover:text-black'>Account</span>
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mt-[1px] text-txt-gray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -82,37 +86,11 @@ function Navbar({ session }) {
                   </div>
                 </div>
               }
-              <div className="w-[1px] bg-txt-gray"></div>
-              {session !== null &&
-                <div className='flex items-center mx-3'>
-                  <img src={avatar} alt="pic" className='rounded-full' />
-                  <span className='text-sm font-bold px-1.5'>{NameAcc}</span>
-                </div>
-              }
-              <div className='flex items-center ml-3.5 relative'>
-                <span id='open-list' className='px-4 py-1 border border-[rgb(234,234,234)] rounded-2xl cursor-pointer' onClick={() => { if (LanguageWin === false) { setLanguageWin(true) } else { setLanguageWin(false) } }}>US</span>
-                {LanguageWin &&
-                  <div className='absolute shadow-mine md:top-[120%] left-[-20%] flex flex-wrap bg-white/40 py-2 rounded-xl backdrop-blur-sm'>
-                    <div className='flex-1 hover:bg-white px-4 py-1 cursor-pointer duration-200'>
-                      <span className='font-semibold'>English</span>
-                      <p className='text-xs'>United States</p>
-                    </div>
-                    <div className='flex-1 hover:bg-white px-4 py-1 cursor-pointer duration-200'>
-                      <span className='font-semibold'>Francais</span>
-                      <p className='text-xs'>Canada</p>
-                    </div>
-                    <div className='flex-1 hover:bg-white px-4 py-1 cursor-pointer duration-200'>
-                      <span className='font-semibold'>Türkçe</span>
-                      <p className='text-xs'>Turkish</p>
-                    </div>
-                  </div>
-                }
-              </div>
             </div>
           </div>
         </div>
       </nav >
-      <Account open={IsAccountPage} close={setIsAccountPage}/>
+      <Account open={IsAccountPage} close={setIsAccountPage} />
     </div>
   )
 }

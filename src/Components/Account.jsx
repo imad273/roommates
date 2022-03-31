@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react';
 import { useEffect, useState } from "react";
 
 function Account({ open, close }) {
 
   const [LoginPage, setLoginPage] = useState(false);
 
-  const [elm, setElm] = useState(false)
+  const [elm, setElm] = useState(false);
 
-  const [Name, setName] = useState("")
-  const [Email, setEmail] = useState("")
-  const [Password, setPassword] = useState("")
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
 
   const showErr = (error) => {
     let msg = document.getElementById('error');
@@ -22,7 +22,7 @@ function Account({ open, close }) {
     btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 animate-spin m-auto' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'/></svg>";
     if (Name === '' || Email === '' || Password === '') {
       showErr("Please Complete The Form");
-      btn.innerHTML = "Sign Up"
+      btn.innerHTML = "Sign Up";
     } else {
       const request = await fetch('http://localhost:3001/regester', {
         method: 'POST',
@@ -39,12 +39,12 @@ function Account({ open, close }) {
       const response = await request.json();
 
       if (response.isRegister === true) {
-        window.sessionStorage.setItem("user", response.user_id)
+        window.sessionStorage.setItem("user", response.user_id);
         window.location = '/';
-        btn.innerHTML = `Sign Up`
+        btn.innerHTML = "Sign Up";
       } else {
         showErr("Semthing wrong");
-        btn.innerHTML = "Sign Up"
+        btn.innerHTML = "Sign Up";
       }
     }
   }
@@ -54,7 +54,7 @@ function Account({ open, close }) {
     btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6 animate-spin m-auto' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'/></svg>";
     if (Email === '' || Password === '') {
       showErr("Please Complete The Form");
-      btn.innerHTML = "Login"
+      btn.innerHTML = "Login";
     } else {
       const request = await fetch('http://localhost:3001/login', {
         method: 'POST',
@@ -184,4 +184,4 @@ function Account({ open, close }) {
   )
 }
 
-export default Account
+export default Account;

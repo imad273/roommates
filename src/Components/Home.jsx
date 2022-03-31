@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
-import { Outlet, Link } from "react-router-dom"
-import MainPic from "../images/main-pic-1.jpg"
+import { useEffect, useState } from "react";
+import { Outlet, Link } from "react-router-dom";
+import MainPic from "../images/main-pic-1.jpg";
 
-function Home({ session }) {
-  const [Last3Elm, setLast3Elm] = useState([])
+function Home() {
+  const [Last3Elm, setLast3Elm] = useState([]);
 
   async function getPlaces() {
     const request = await fetch('http://localhost:3001/places', {
@@ -15,7 +15,6 @@ function Home({ session }) {
     var response = await request.json();
 
     return response;
-
   }
 
   useEffect(() => {
@@ -23,7 +22,7 @@ function Home({ session }) {
       let numOfElm;
       if (res.length >= 3) {
         numOfElm = 3;
-      } else if (res.length === 2) { numOfElm = 2 } else { numOfElm = 1 }
+      } else if (res.length === 2) { numOfElm = 2 } else { numOfElm = 1 };
 
       var last3 = [];
       for (let i = res.length - 1; i >= res.length - numOfElm; i--) {
@@ -104,4 +103,4 @@ function Home({ session }) {
   )
 }
 
-export default Home
+export default Home;
